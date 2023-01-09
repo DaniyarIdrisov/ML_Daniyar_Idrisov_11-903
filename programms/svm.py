@@ -14,9 +14,12 @@ BROWN = (0, 0, 255)
 
 def start():
     global running
+    # Создаётся 2 кучки, с 40 точками, и центрами в (100, 100), (700, 500) и стандартным отклонием 50
     points, labels = make_blobs(n_samples=40, centers=2, center_box=((100, 100), (700, 500)), cluster_std=50)
+    # C Параметр регуляризации. Сила регуляризации обратно пропорциональна C. Должна быть строго положительной. Штраф представляет собой штраф в квадрате l2.
     clf = svm.SVC(kernel='linear', C=1000)
     clf.fit(points, labels)
+    # фиалетовое если к классу 0, иначе черное
     colors = [PURPLE if label == 0 else BLACK for label in labels]
     pygame.init()
     screen = pygame.display.set_mode((1024, 768))
@@ -26,7 +29,9 @@ def start():
     dc = []
     x = np.linspace(0, 800)
     w = clf.coef_[0]
+    # вычислим коэффициент наклона перед x
     a = -w[0] / w[1]
+    # уравнение прямой, со сдвигом (clf.intercept_[0]) / w[1]
     y = a * x - (clf.intercept_[0]) / w[1]
     print('yy', y)
     while running:

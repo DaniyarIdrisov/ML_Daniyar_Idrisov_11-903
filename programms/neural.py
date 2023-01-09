@@ -1,7 +1,7 @@
 import cv2
 import pytesseract
 
-PATH = 'Z:\Images\8411cd218f6e65f5a6af10c90b787836.jpg'
+PATH = 'Z:\Images\Cwk0wwZq3BU.jpg'
 
 
 if __name__ == '__main__':
