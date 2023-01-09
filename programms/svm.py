@@ -33,7 +33,7 @@ def start():
     w = clf.coef_[0]
     # вычислим коэффициент наклона перед x
     a = -w[0] / w[1]
-    # уравнение прямой, со сдвигом (clf.intercept_[0]) / w[1]
+    # уравнение прямой, со сдвигом |>
     y = a * x - (clf.intercept_[0]) / w[1]
     print('yy', y)
     while running:
